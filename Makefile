@@ -380,7 +380,7 @@ define BUILDBOX
 $(VIRTUALBOX_BOX_DIR)/$(1)$(BOX_SUFFIX): $(1).json
 	rm -rf $(VIRTUALBOX_OUTPUT)
 	mkdir -p $(VIRTUALBOX_BOX_DIR)
-	$(PACKER) build -only=$(VIRTUALBOX_BUILDER) $(PACKER_VARS) -var "iso_url=$(2)" -var "iso_checksum=$(3)" $(1).json
+	$(PACKER) build -only=$(VIRTUALBOX_BUILDER) $(PACKER_VARS) -var "iso_url=$(2)" -var "iso_checksum=$(3)" -var "guest_additions_url=http://download.virtualbox.org/virtualbox/5.2.6/VBoxGuestAdditions_5.2.6.iso" $(1).json
 
 $(VMWARE_BOX_DIR)/$(1)$(BOX_SUFFIX): $(1).json
 	rm -rf $(VMWARE_OUTPUT)
